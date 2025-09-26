@@ -14,8 +14,8 @@ This is a **learning exercise** where you'll practice debugging real-world Djang
 
 This project contains **3 distinct bugs** that are commonly encountered in Django development:
 
-1. **🔗 Routing Bug**: A NoReverseMatch error caused by a typo in a URL template tag
-2. **📊 Data Bug**: A page that loads but is missing data due to incomplete view logic
+1. **🔗 Routing Bug**: A NoReverseMatch error 
+2. **📊 Data Bug**: A page that loads but is missing data
 3. **⚡ Performance Bug**: An N+1 query problem that causes inefficient database queries
 
 Your task is to:
