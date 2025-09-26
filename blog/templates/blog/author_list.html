@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Authors - Django Detectives Blog{% endblock %}
+
+{% block content %}
+<h2>Authors</h2>
+
+{% if authors %}
+    {% for author in authors %}
+    <div class="author">
+        <h3><a href="{% url 'author_detail' author.id %}">{{ author }}</a></h3>
+        {% if author.bio %}
+            <p>{{ author.bio|truncatewords:20 }}</p>
+        {% endif %}
+        {% if author.website %}
+            <p><a href="{{ author.website }}" target="_blank">Visit website</a></p>
+        {% endif %}
+    </div>
+    {% endfor %}
+{% else %}
+    <p>No authors available yet.</p>
+{% endif %}
+{% endblock %}

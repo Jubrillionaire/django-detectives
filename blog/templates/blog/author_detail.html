@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ author }} - Django Detectives Blog{% endblock %}
+
+{% block content %}
+<div class="author">
+    <h2>{{ author }}</h2>
+    {% if author.bio %}
+        <p><strong>Bio:</strong> {{ author.bio }}</p>
+    {% endif %}
+    {% if author.website %}
+        <p><strong>Website:</strong> <a href="{{ author.website }}" target="_blank">{{ author.website }}</a></p>
+    {% endif %}
+</div>
+
+<h3>Posts by {{ author }}</h3>
+
+{% if posts %}
+    {% for post in posts %}
+    <div class="post">
+        <h4><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h4>
+        <div class="meta">
+            Published on {{ post.created_at|date:"F d, Y" }}
+        </div>
+        <p>{{ post.content|truncatewords:30 }}</p>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>No posts by this author yet.</p>
+{% endif %}
+
+<p><a href="{% url 'author_list' %}">← Back to all authors</a></p>
+{% endblock %}
