@@ -29,23 +29,57 @@ Your task is to:
 ### Prerequisites
 - Python 3.8 or higher
 - Basic knowledge of Django
+- Git (for cloning) or a web browser (for downloading)
 
-### Step 1: Set Up the Environment
+### Step 1: Get the Project on Your Computer
 
-1. **Clone or download** this project to your local machine
+You have two options to get this project on your computer:
 
-2. **Create a virtual environment** (recommended):
+#### Option A: Clone with Git (Recommended)
+
+1. **Open your terminal/command prompt**
+
+2. **Navigate to where you want to save the project**:
+   ```bash
+   cd Desktop  # or wherever you want to save it
+   ```
+
+3. **Clone the repository**:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/django_detectives.git
+   cd django_detectives
+   ```
+   Replace `YOUR_USERNAME` with the actual GitHub username of the repository owner.
+
+#### Option B: Download as ZIP
+
+1. **Go to the GitHub repository** in your web browser
+
+2. **Click the green "Code" button** in the top-right corner
+
+3. **Select "Download ZIP"** from the dropdown menu
+
+4. **Extract the ZIP file** to your desired location (e.g., Desktop)
+
+5. **Open your terminal/command prompt** and navigate to the extracted folder:
+   ```bash
+   cd Desktop/django_detectives-main  # or wherever you extracted it
+   ```
+
+### Step 2: Set Up the Environment
+
+1. **Create a virtual environment** (recommended):
    ```bash
    python3 -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-3. **Install Django**:
+2. **Install Django**:
    ```bash
    pip install -r requirements.txt
    ```
 
-### Step 2: Set Up the Database
+### Step 3: Set Up the Database
 
 1. **Create database migrations**:
    ```bash
@@ -57,7 +91,7 @@ Your task is to:
    python manage.py migrate
    ```
 
-### Step 3: Create a Superuser
+### Step 4: Create a Superuser
 
 Create an admin user to access the Django admin interface:
 
@@ -67,7 +101,7 @@ python manage.py createsuperuser
 
 Follow the prompts to create your admin account (username, email, password).
 
-### Step 4: Seed the Database with Sample Data
+### Step 5: Seed the Database with Sample Data
 
 Run this command to create sample authors and posts for testing:
 
@@ -121,7 +155,7 @@ print('Sample data created successfully!')
 exit()
 ```
 
-### Step 5: Run the Application
+### Step 6: Run the Application
 
 Start the Django development server:
 
