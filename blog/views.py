@@ -5,15 +5,13 @@ from .models import Post, Author
 
 def home(request):
     """Home page showing recent posts"""
-    # Bug: N+1 query problem - should use select_related('author')
-    posts = Post.objects.filter(published=True).order_by('-created_at')[:5]
+    posts = Post.objects.filter(published=True).select_related('author').order_by('-created_at')[:5]
     return render(request, 'blog/home.html', {'posts': posts})
 
 
 def post_list(request):
     """List all published posts"""
-    # Bug: N+1 query problem - should use select_related('author')
-    posts = Post.objects.filter(published=True).order_by('-created_at')
+    posts = Post.objects.filter(published=True).select_related('author').order_by('-created_at')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 
@@ -32,5 +30,5 @@ def author_list(request):
 def author_detail(request, author_id):
     """Show individual author details and their posts"""
     author = get_object_or_404(Author, id=author_id)
-    # Bug: Forgot to pass posts to template context
-    return render(request, 'blog/author_detail.html', {'author': author})
+    posts = Post.objects.filter(author=author, published=True).order_by('-created_at')
+    return render(request, 'blog/author_detail.html', {'author': author, 'posts': posts})
